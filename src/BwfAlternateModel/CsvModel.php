@@ -8,7 +8,7 @@ class CsvModel
 {
 
     /**
-     * 
+     *
      * @var Zend\Http\PhpEnvironment\Response
      * @access protected
      */
@@ -16,8 +16,8 @@ class CsvModel
 
     /**
      * конструктор
-     * 
-     * @param unknown_type $response
+     *
+     * @param Zend\Http\PhpEnvironment\Response $response
      */
     public function __construct(Response $response)
     {
@@ -25,7 +25,7 @@ class CsvModel
     }
 
     /**
-     * 
+     *
      * @param Response $response
      * @return BwfAlternateModel\CsvModel
      */
@@ -36,9 +36,9 @@ class CsvModel
     }
 
     /**
-     * цепляет к объекту Zend\Http\PhpEnvironment\Response 
+     * цепляет к объекту Zend\Http\PhpEnvironment\Response
      * дополнительные заголовки и отправляемый контент.
-     * 
+     *
      * @param String $filepath
      * @param String|NULL $attached_fname
      * @throws \Exception
@@ -47,26 +47,26 @@ class CsvModel
     public function __invoke(array $data, $attached_fname = null)
     {
         $csv = '';
-        
+
         foreach($data as $sub) {
             if(! is_array($sub))
                 throw new \Exception(
                     'Данные должны быть в двумерном массиве!');
-            
+
             $csv .= implode(';', $sub);
             $csv .= "\r\n";
         }
-        
-        $attached_fname = $attached_fname == null ? date('Y-m-d') : $attached_fname;
-        
+
+        $attached_fname = $attached_fname == null ? date('Y-m-d-H-i-s') : $attached_fname;
+
         $this->response->getHeaders()
             ->addHeaderline('Content-type', 'csv/plain')
             ->addHeaderline('Content-length', strlen($csv))
-            ->addHeaderline('Content-Disposition', 
+            ->addHeaderline('Content-Disposition',
             'attachment; filename=' . $attached_fname . '.csv');
-        
+
         $this->response->setContent($csv);
-        
+
         return $this->response;
     }
 }
