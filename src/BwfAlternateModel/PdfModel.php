@@ -1,9 +1,20 @@
 <?php
 
+/**
+ * @namespace BwfAlternateModel
+ */
 namespace BwfAlternateModel;
 
+/**
+ * @uses Zend\Http\PhpEnvironment\Response
+ */
 use Zend\Http\PhpEnvironment\Response;
 
+/**
+ *
+ * @package		BwfAlternateModel
+ * @author      Mikhail Levykin <roa72@mail.ru>
+ */
 class PdfModel
 {
 
