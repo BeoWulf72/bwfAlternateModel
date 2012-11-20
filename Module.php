@@ -7,7 +7,7 @@ namespace BwfAlternateModel;
 
 /**
  *
- * @package        BwfAsset
+ * @package        BwfAlternateModel
  * @author         Mikhail Levykin <roa72@mail.ru>
  * @changedby      $Author: beowulfus $
  * @version        SVN: $Id: $
