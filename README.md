@@ -3,8 +3,14 @@
 ##Usage
 
 ```php
+
+$csv_data = array(
+  array('id', 'name', 'count'),
+  //...
+);
+
 $model = $this->getServiceLocator('bwfCsvModel');
-return $model(array(array(1,2,3)));
+return $model($csv_data);
 ```
 
 =================
